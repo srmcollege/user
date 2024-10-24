@@ -1,0 +1,116 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+class BinaryTree:
+    def __init__(self):
+        self.root = None
+
+    # Insertion
+    def insert(self, data):
+        if self.root is None:
+            self.root = Node(data)
+        else:
+            self._insert_recursively(self.root, data)
+
+    def _insert_recursively(self, current, data):
+        if data < current.data:
+            if current.left is None:
+                current.left = Node(data)
+            else:
+                self._insert_recursively(current.left, data)
+        else:
+            if current.right is None:
+                current.right = Node(data)
+            else:
+                self._insert_recursively(current.right, data)
+
+    # Traversal
+    def inorder_traversal(self):
+        print("Inorder Traversal:")
+        self._inorder_recursively(self.root)
+        print()
+
+    def _inorder_recursively(self, current):
+        if current:
+            self._inorder_recursively(current.left)
+            print(current.data, end=" ")
+            self._inorder_recursively(current.right)
+
+    def preorder_traversal(self):
+        print("Preorder Traversal:")
+        self._preorder_recursively(self.root)
+        print()
+
+    def _preorder_recursively(self, current):
+        if current:
+            print(current.data, end=" ")
+            self._preorder_recursively(current.left)
+            self._preorder_recursively(current.right)
+
+    def postorder_traversal(self):
+        print("Postorder Traversal:")
+        self._postorder_recursively(self.root)
+        print()
+
+    def _postorder_recursively(self, current):
+        if current:
+            self._postorder_recursively(current.left)
+            self._postorder_recursively(current.right)
+            print(current.data, end=" ")
+
+    # Deletion
+    def delete(self, data):
+        self.root = self._delete_recursively(self.root, data)
+
+    def _delete_recursively(self, current, data):
+        if current is None:
+            return current
+
+        if data < current.data:
+            current.left = self._delete_recursively(current.left, data)
+        elif data > current.data:
+            current.right = self._delete_recursively(current.right, data)
+        else:
+            if current.left is None:
+                return current.right
+            elif current.right is None:
+                return current.left
+            
+            min_larger_node = self._get_min(current.right)
+            current.data = min_larger_node.data
+            current.right = self._delete_recursively(current.right, min_larger_node.data)
+
+        return current
+
+    def _get_min(self, current):
+        while current.left:
+            current = current.left
+        return current
+
+# Example Usage
+bt = BinaryTree()
+
+# Insertion
+bt.insert(50)
+bt.insert(30)
+bt.insert(20)
+bt.insert(40)
+bt.insert(70)
+bt.insert(60)
+bt.insert(80)
+
+# Traversal
+bt.inorder_traversal()
+bt.preorder_traversal()
+bt.postorder_traversal()
+
+# Deletion
+bt.delete(20)
+bt.inorder_traversal()
+bt.delete(30)
+bt.inorder_traversal()
+bt.delete(50)
+bt.inorder_traversal()

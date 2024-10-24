@@ -1,0 +1,54 @@
+import heapq
+
+class Node:
+    def __init__(self, char, freq):
+        self.char = char
+        self.freq = freq
+
+    def __lt__(self, other):
+        return self.freq < other.freq
+
+class HuffmanHeap:
+    def __init__(self):
+        self.heap = []
+
+    def insert(self, char, freq):
+        node = Node(char, freq)
+        heapq.heappush(self.heap, node)
+
+    def delete(self):
+        if self.heap:
+            return heapq.heappop(self.heap)
+        return None
+
+    def display(self):
+        for node in self.heap:
+            print(f"Character: {node.char}, Frequency: {node.freq}")
+
+# Example Usage
+if __name__ == "__main__":
+    huffman_heap = HuffmanHeap()
+
+    # Insertion
+    huffman_heap.insert("a", 5)
+    huffman_heap.insert("b", 9)
+    huffman_heap.insert("c", 12)
+    huffman_heap.insert("d", 13)
+    huffman_heap.insert("e", 16)
+    huffman_heap.insert("f", 45)
+
+    # Display the heap
+    print("Heap Contents:")
+    huffman_heap.display()
+
+    # Deletion
+    print("\nDeleting the minimum frequency node:")
+    deleted_node = huffman_heap.delete()
+    if deleted_node:
+        print(f"Deleted: Character: {deleted_node.char}, Frequency: {deleted_node.freq}")
+    else:
+        print("Heap is empty.")
+
+    # Display the heap again after deletion
+    print("\nHeap Contents after deletion:")
+    huffman_heap.display()

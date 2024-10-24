@@ -1,0 +1,11 @@
+queue=["first","second","third","fourth"]
+print("Original queue is ",queue)
+queue.append("fifth")
+print("queue after updating :",queue)
+queue.append("sixth")
+print("queue after updating :",queue)
+
+queue.pop(0)
+print("queue after removing an element :",queue)
+queue.pop(0)
+print("queue after removing an element :",queue)

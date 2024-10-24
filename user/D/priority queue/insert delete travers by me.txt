@@ -1,0 +1,23 @@
+queue = []
+
+queue.append(("D", 2))
+queue.append(("B", 1))
+queue.append(("A", 3))
+queue.append(("C", 4))
+
+queue.sort(key=lambda x: x[1])
+
+print("Enqueued items with priorities:")
+for item, priority in queue:
+    print(f"Item: {item}, Priority: {priority}")
+
+print("\nAfter dequeuing the highest priority item:")
+if queue:
+    item, priority = queue.pop(0)
+    print(f"Dequeued: {item} with priority {priority}")
+else:
+    print("Queue is Empty")
+
+print("\nCurrent Queue:")
+for item, priority in queue:
+    print(f"Item: {item}, Priority: {priority}")

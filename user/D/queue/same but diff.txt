@@ -1,0 +1,68 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class Queue:
+    def __init__(self):
+        self.front = None
+        self.rear = None
+
+    # Insertion
+    def enqueue(self, data):
+        new_node = Node(data)
+        if self.rear is None:
+            self.front = self.rear = new_node
+            print(f"Enqueued: {data}")
+            return
+        self.rear.next = new_node
+        self.rear = new_node
+        print(f"Enqueued: {data}")
+
+    # Traversal
+    def traverse(self):
+        current = self.front
+        if current is None:
+            print("Queue is empty.")
+            return
+
+        print("Queue elements:")
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
+    # Deletion
+    def dequeue(self):
+        if self.front is None:
+            print("Queue is empty. Nothing to dequeue.")
+            return
+        dequeued_node = self.front
+        self.front = self.front.next
+        if self.front is None:
+            self.rear = None
+        print(f"Dequeued: {dequeued_node.data}")
+
+# Example Usage
+queue = Queue()
+
+# Enqueue elements
+queue.enqueue(10)
+queue.enqueue(20)
+queue.enqueue(30)
+
+# Traverse the queue
+queue.traverse()
+
+# Dequeue elements
+queue.dequeue()
+queue.dequeue()
+
+# Traverse the queue after dequeuing
+queue.traverse()
+
+# Dequeue remaining element
+queue.dequeue()
+
+# Attempt to dequeue from an empty queue
+queue.dequeue()

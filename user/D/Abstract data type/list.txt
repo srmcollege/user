@@ -1,0 +1,9 @@
+list=["Kudal","Kankavli","Devgad","Rajapur"]
+print("Original list is :",list)
+list.insert(0,"Ratnagiri")
+print("List after inserting :",list)
+list.insert(4,"Mumbai")
+print("List after inserting :",list)
+
+list.remove("Mumbai")
+print("List after Removing:",list)
