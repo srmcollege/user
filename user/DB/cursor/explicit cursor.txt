@@ -1,0 +1,76 @@
+-- Example 1: Fetching Data from Customers Table
+DECLARE  
+   c_id customers.id%TYPE;  
+   c_name customers.name%TYPE;  
+   c_addr customers.department%TYPE;  
+   CURSOR c_customers IS  
+      SELECT id, name, department FROM customers;  
+BEGIN  
+   OPEN c_customers;  
+   LOOP  
+      FETCH c_customers INTO c_id, c_name, c_addr;  
+      EXIT WHEN c_customers%NOTFOUND;  
+      DBMS_OUTPUT.PUT_LINE(c_id || ' ' || c_name || ' ' || c_addr);  
+   END LOOP;  
+   CLOSE c_customers;  
+END;
+/
+
+-- Example 2: Fetching Data from Customers Table with Salary
+DECLARE  
+   c_id customers.id%TYPE;  
+   c_name customers.name%TYPE;  
+   c_salary customers.salary%TYPE;  
+   c_dept customers.department%TYPE;  
+   CURSOR c_customers IS  
+      SELECT id, name, salary, department FROM customers;  
+BEGIN  
+   OPEN c_customers;  
+   LOOP  
+      FETCH c_customers INTO c_id, c_name, c_salary, c_dept;  
+      EXIT WHEN c_customers%NOTFOUND;  
+      DBMS_OUTPUT.PUT_LINE(c_id || ' ' || c_name || ' ' || c_salary || ' ' || c_dept);  
+   END LOOP;  
+   CLOSE c_customers;  
+END;
+/
+
+-- Example 3: Fetching Data from Employee Table
+DECLARE  
+   c_id employee.id%TYPE;  
+   c_name employee.name%TYPE;  
+   CURSOR c_employees IS  
+      SELECT id, name FROM employee;  
+BEGIN  
+   OPEN c_employees;  
+   LOOP  
+      FETCH c_employees INTO c_id, c_name;  
+      EXIT WHEN c_employees%NOTFOUND;  
+      DBMS_OUTPUT.PUT_LINE(c_id || ' ' || c_name);  
+   END LOOP;  
+   CLOSE c_employees;  
+END;
+/
+
+-- Example 4: Fetching Data from Employee Table with Parameterized Cursor
+DECLARE
+   CURSOR emp_cursor (p_department_id NUMBER) IS
+      SELECT id, name FROM employee
+      WHERE id = p_department_id;
+
+   v_id employee.id%TYPE;
+   v_name employee.name%TYPE;
+
+BEGIN
+   OPEN emp_cursor(10); -- Assuming 10 is a valid employee ID
+
+   LOOP
+      FETCH emp_cursor INTO v_id, v_name;
+      EXIT WHEN emp_cursor%NOTFOUND;
+
+      DBMS_OUTPUT.PUT_LINE('Employee ID: ' || v_id || ', Name: ' || v_name);
+   END LOOP;
+
+   CLOSE emp_cursor;
+END;
+/

@@ -1,0 +1,136 @@
+
+--====function====on===Table==============================================
+create table coustmer(id number(2),name varchar (30),department varchar(20),salary number(10))
+insert into coustmer(1001,"Sanjay Jadhav","Finance",300000)
+insert into coustmer(1002,"Madhav Sudrik","Marketing",400000)
+insert into coustmer(1003,"Shantanu Shinde","CS",450000)
+insert into coustmer(1004,"Pandhari Mauli","HR",500000)
+insert into coustmer(1005,"Harshad Rane","Finance",450000)
+insert into coustmer(1006,"Roshan Mahadik","HR",500000)
+insert into coustmer(1007,"Aryan Nikam","Marketing",300000)
+insert into coustmer(1008,"Davendra Chavan","Finance",350000)
+insert into coustmer(1009,"Pratham Dikshit","CS",450000)
+insert into coustmer(1010,"Kabir Gada","Digitla Marketer",350000)
+
+drop table customer
+
+select*from coustmer
+
+
+create or replace function totalcustomer
+RETURN  number IS
+total number(2):=0;
+BEGIN
+select count(*)into total 
+FROM coustmer;
+RETYRN total;
+END;
+
+DECLARE 
+C number(2)
+BEGIN
+C := totalcustomer
+dbms_output.put_line("Total number of customer :" || C);
+END;
+
+
+--============R=e=c=u=r=s=i=v=e===F=u=n=c=t=i=o=n=====================================
+
+DECLARE 
+NUM NUMBER;
+FACTORIAL NUMBER;
+
+FUNCTION FACT(X NUMBER)
+RETURN NUMBER
+IS
+F NUMBER;
+BEGIN
+IF X=0 THEN
+F:=1;
+ELSE
+F:=X*FACT(X-1);
+END IF;
+RETURN F;
+END;
+
+BEGIN 
+NUM :=6;
+FACTORIAL := FACT(NUM);
+dbms_output.put_line('factorial '|| NUM ||' is '||FACTORIAL);
+END;
+
+--=============PROCEDURE==UPDATE===QUERY==============================================================================
+create table EMPLOYEE (id number(5),name varchar (30),department varchar(20),salary number(10))
+insert into EMPLOYEE values(1001,'Sanjay Jadhav','Finance',300000)
+insert into EMPLOYEE values(1002,'Madhav Sudrik','Marketing',400000)
+insert into EMPLOYEE values(1003,'Shantanu Shinde','CS',450000)
+insert into EMPLOYEE values(1004,'Pandhari Mauli','HR',500000)
+insert into EMPLOYEE values(1005,'Harshad Rane','Finance',450000)
+insert into EMPLOYEE values(1006,'Roshan Mahadik','HR',500000)
+insert into EMPLOYEE values(1007,'Aryan Nikam','Marketing',300000)
+insert into EMPLOYEE values(1008,'Davendra Chavan','Finance',350000)
+insert into EMPLOYEE values(1009,'Pratham Dikshit','CS',450000)
+insert into EMPLOYEE values(1010,'Kabir Gada','Digitla Marketer',350000)
+
+drop table EMPLOYEE
+
+select*from  EMPLOYEE
+
+
+CREATE OR REPLACE PROCEDURE EMPLOYEE1(PID IN NUMBER,PSALARY IN NUMBER)
+IS
+BEGIN
+UPDATE EMPLOYEE SET SALARY=PSALARY WHERE ID=PID;
+END;
+
+BEGIN 
+EMPLOYEE1(1006,55000);
+dbms_output.put_line('RECORD UPDATED SUCESSFULY');
+END
+--========TO==INSERT==VALUES===================================================
+CREATE TABLE STUDENT(ID NUMBER(3),NAME VARCHAR(20),DEPARTMENT VARCHAR(20))
+INSERT INTO STUDENT VALUES(1,'SANJAR','CS')
+INSERT INTO STUDENT VALUES(2,'SUNDAR','BAF')
+INSERT INTO STUDENT VALUES(3,'NEIGEL','BCOM')
+INSERT INTO STUDENT VALUES(4,'MAHESH','BA')
+INSERT INTO STUDENT VALUES(5,'SAI','CS')
+INSERT INTO STUDENT VALUES(6,'HARSH','CS')
+INSERT INTO STUDENT VALUES(7,'MOHAN','BCOM')
+INSERT INTO STUDENT VALUES(8,'SANTOSH','CS')
+INSERT INTO STUDENT VALUES(9,'NISHANT','BCOM')
+INSERT INTO STUDENT VALUES(10,'MANOHAR','CS')
+INSERT INTO STUDENT VALUES(11,'MANGESH','BA')
+INSERT INTO STUDENT VALUES(12,'RAM','BCOM')
+INSERT INTO STUDENT VALUES(13,'UTTAM','CS')
+INSERT INTO STUDENT VALUES(14,'TANSHIQ','BCOM')
+INSERT INTO STUDENT VALUES(15,'KUNDAN','BA')
+INSERT INTO STUDENT VALUES(16,'SANJU','BCOM')
+SELECT*FROM STUDENT
+
+DROP TABLE STUDENT
+
+CREATE OR REPLACE PROCEDURE INSERT_USER(ID IN NUMBER,NAME IN VARCHAR,DEPARTMENT IN VARCHAR)
+IS
+BEGIN
+INSERT INTO STUDENT VALUES(ID,NAME,DEPARTMENT);
+END
+
+BEGIN 
+INSERT_USER(19,'JOTY','BCOM');
+INSERT_USER(20,'RAMAN','CS');
+INSERT_USER(21,'HARI','BCOM');
+INSERT_USER(22,'MAKARAND','BA');
+DBMS_OUTPUT.PUT_LINE('RECORD INSERTED SUCCESSFULL');
+END
+--===DELETING VALUE FROM STUDENT TABLE==========================================================================
+
+CREATE OR REPLACE PROCEDURE DEL_STUDENT(PID IN NUMBER)
+IS
+BEGIN
+DELETE FROM STUDENT WHERE ID=PID;
+END;
+
+BEGIN
+DEL_STUDENT(10);
+DBMS_OUTPUT.PUT_LINE('RECORD DELETED SUCCESSFULL');
+END

@@ -1,0 +1,16 @@
+create table EMPLOYEE (id number(5),name varchar (30),department varchar(20),salary number(10))
+
+insert into EMPLOYEE values(1001,'Sanjay Jadhav','Finance',300000)
+insert into EMPLOYEE values(1002,'Madhav Sudrik','Marketing',400000)
+insert into EMPLOYEE values(1003,'Shantanu Shinde','CS',450000)
+insert into EMPLOYEE values(1004,'Pandhari Mauli','HR',500000)
+insert into EMPLOYEE values(1005,'Harshad Rane','Finance',450000)
+insert into EMPLOYEE values(1006,'Roshan Mahadik','HR',500000)
+insert into EMPLOYEE values(1007,'Aryan Nikam','Marketing',300000)
+insert into EMPLOYEE values(1008,'Davendra Chavan','Finance',350000)
+insert into EMPLOYEE values(1009,'Pratham Dikshit','CS',450000)
+insert into EMPLOYEE values(1010,'Kabir Gada','Digitla Marketer',350000)
+
+drop table EMPLOYEE
+
+select*from  EMPLOYEE

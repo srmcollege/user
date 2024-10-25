@@ -1,0 +1,17 @@
+CREATE OR REPLACE FUNCTION calculateSquare (num IN NUMBER) 
+RETURN NUMBER 
+IS 
+    square NUMBER; 
+BEGIN 
+    square := num * num; 
+    RETURN square; 
+END calculateSquare;
+/
+
+DECLARE 
+    result NUMBER; 
+BEGIN 
+    result := calculateSquare(5); 
+    DBMS_OUTPUT.PUT_LINE('The square of 5 is: ' || result); 
+END;
+/

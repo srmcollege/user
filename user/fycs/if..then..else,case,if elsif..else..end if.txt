@@ -1,0 +1,43 @@
+---IF-ELSE statement.
+declare
+a number (3):=500;
+begin
+----check the boolean condition using if statement
+if(a<20)then
+----if condition is true then print the following
+dbms_output.put_line('a is less then 20');
+else
+dbms_output.put_line('a is not less then 20');
+end if;
+dbms_output.put_line('value of a is :'||a);
+end;
+///////////////////////////////////////////////////////////////////////////
+----CASE STATEMENT
+declare
+grade char(1):='A';
+begin
+case grade
+when 'A' then dbms_output.put_line('EXCELLENT');
+when 'B' then dbms_output.put_line('VERY GOOD');
+when 'C' then dbms_output.put_line('GOOD');
+when 'D' then dbms_output.put_line('AVERAGE');
+when 'F' then dbms_output.put_line('PASSED WITH GRACE');
+else dbms_output.put_line('FAILED');
+end case;
+end;
+////////////////////////////////////////////////////////////////////////////////
+---------IF...ELSIF...ELSE... END IF
+DECLARE
+a number(3) := 100; 
+BEGIN
+IF (a = 10) THEN
+dbms_output.put_line ('Value of a is 10' ); 
+ELSIF (a = 20) THEN
+dbms_output.put_line('Value of a is 20' ); 
+ELSIF (a = 30) THEN
+dbms_output.put_line('Value of a is 30' ); 
+ELSE
+dbms_output.put_line('None of the values is matching'); 
+END IF;
+dbms_output.put_line('Exact value of a is: '|| a ); 
+END;

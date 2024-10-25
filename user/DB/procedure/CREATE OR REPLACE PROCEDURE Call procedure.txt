@@ -1,0 +1,12 @@
+CREATE OR REPLACE PROCEDURE replaceprocedure 
+IS
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Procedure replaced successfully....');
+END replaceprocedure;
+/
+
+-- Call the procedure
+BEGIN
+   replaceprocedure;  
+END;
+/

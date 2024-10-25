@@ -1,0 +1,22 @@
+-- Step 1: Create Employees Table
+CREATE TABLE employees32 (employee_id NUMBER PRIMARY KEY,employee_name VARCHAR2(50),salary NUMBER);
+
+CREATE OR REPLACE TRIGGER trg_before_delete_employee
+BEFORE DELETE ON employees32
+FOR EACH ROW
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Deleting Employee: ID=' || :OLD.employee_id || 
+                         ', Name=' || :OLD.employee_name || 
+                         ', Salary=' || :OLD.salary);
+END;
+/
+
+SET SERVEROUTPUT ON;
+
+INSERT INTO employees32 (employee_id, employee_name, salary) VALUES (12, 'Alice', 400000);
+INSERT INTO employees32 (employee_id, employee_name, salary) VALUES (22, 'Bob', 600000);
+
+select *from employees32
+
+DELETE FROM employees32 WHERE employee_id = 1;
+DELETE FROM employees32 WHERE employee_id = 2;

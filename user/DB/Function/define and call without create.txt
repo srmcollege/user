@@ -1,0 +1,14 @@
+DECLARE
+    result NUMBER; 
+    FUNCTION calculateSquare(num IN NUMBER) RETURN NUMBER IS
+        square NUMBER;
+    BEGIN
+        square := num * num;
+        RETURN square;
+    END calculateSquare;
+
+BEGIN
+    result := calculateSquare(5);
+    DBMS_OUTPUT.PUT_LINE('The square of 5 is: ' || result);
+END;
+/

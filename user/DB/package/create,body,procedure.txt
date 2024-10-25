@@ -1,0 +1,24 @@
+-- Package Specification
+CREATE OR REPLACE PACKAGE customer_pkg AS
+    PROCEDURE insert_customer(p_id NUMBER, p_name VARCHAR2);
+END customer_pkg;
+/
+
+-- Package Body
+CREATE OR REPLACE PACKAGE BODY customer_pkg AS
+    PROCEDURE insert_customer(p_id NUMBER, p_name VARCHAR2) IS
+    BEGIN
+        INSERT INTO customers (id, name) VALUES (p_id, p_name);
+        DBMS_OUTPUT.PUT_LINE('Customer inserted: ' || p_name);
+    END insert_customer;
+END customer_pkg;
+/
+
+-- Example Usage
+SET SERVEROUTPUT ON;
+
+BEGIN
+    customer_pkg.insert_customer(1, 'Alice');
+    customer_pkg.insert_customer(2, 'Bob');
+END;
+/

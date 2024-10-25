@@ -1,0 +1,30 @@
+--While loop 
+
+1)
+declare 
+i int := 1;
+begin
+while i<=10 loop
+dbms_output.put_line(i);
+i:= i+ 1 ;
+end loop;
+end;
+
+2)
+declare
+	var1 number;
+	var2 number;
+
+begin
+	var1 := 200;
+	var2 := 1;
+	while (var2 <=10)
+	Loop
+	dbms_output.put_line(var1 * var2);
+	var2 := var2 + 1 ;
+	end loop;
+
+end;
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+

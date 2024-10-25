@@ -1,0 +1,13 @@
+DECLARE  
+   a NUMBER(2) := 30;  
+BEGIN  
+   <<loopstart>>  
+   WHILE a < 50 LOOP  
+      DBMS_OUTPUT.PUT_LINE('value of a: ' || a);  
+      a := a + 1;  
+      IF a = 35 THEN  
+         a := a + 1;  
+         GOTO loopstart;  
+      END IF;  
+   END LOOP;  
+END;

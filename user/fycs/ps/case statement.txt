@@ -1,0 +1,14 @@
+--case statement
+
+DECLARE
+grade char(1):='A';
+BEGIN
+CASE grade
+WHEN 'A' THEN dbms_output.put_line('Excellent');
+WHEN 'B' THEN dbms_output.put_line('Very good');
+WHEN 'C' THEN dbms_output.put_line('Good');
+WHEN 'D' THEN dbms_output.put_line('Average');
+WHEN 'F' THEN dbms_output.put_line('Passed by grace');
+else dbms_output.put_line('Failed');
+END CASE;
+END;

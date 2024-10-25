@@ -1,0 +1,9 @@
+DECLARE  
+   num NUMBER := 1;  
+BEGIN  
+   IF num > 3 THEN  
+      NULL;  
+   ELSE  
+      DBMS_OUTPUT.PUT_LINE('num is: ' || num || ' is less than 3');  
+   END IF;  
+END;

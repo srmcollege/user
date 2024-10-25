@@ -1,0 +1,34 @@
+------GOTO
+DECLARE
+a NUMBER(2):=30;
+BEGIN
+<<LOOPSTART>>
+----WHILE LOOP EXECUTION
+WHILE a<50 LOOP
+DBMS_OUTPUT.PUT_LINE('VALUE OF A:'||a);
+a:=a+1;
+IF a=35 THEN
+a:=a+1;
+GOTO LOOPSTART;
+END IF;
+END LOOP;
+END;
+
+/////////////////////////////////////////////////////////////////////////////
+
+------NULL as statement inside IF
+DECLARE
+a NUMBER (2) := 10;
+BEGIN
+------While loop execution
+WHILE a < 20 LOOP
+DBMS_OUTPUT.PUT_LINE('Value of a: ' || a);
+------Increment value of a
+a := a + 1;
+
+IF a=15 THEN
+------Skip further processing for this iteration, if a is 15
+NULL;
+END IF;
+END LOOP;
+END;

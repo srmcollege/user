@@ -1,0 +1,17 @@
+create table customer(id number(2),name varchar (30),department varchar(20),salary number(10))
+
+INSERT INTO customer VALUES (1, 'Sanjay Jadhav', 'Finance', 300000);
+INSERT INTO customer VALUES (2, 'Madhav Sudrik', 'Marketing', 400000);
+INSERT INTO customer VALUES (3, 'Shantanu Shinde', 'CS', 450000);
+INSERT INTO customer VALUES (4, 'Pandhari Mauli', 'HR', 500000);
+INSERT INTO customer VALUES (5, 'Harshad Rane', 'Finance', 450000);
+INSERT INTO customer VALUES (6, 'Roshan Mahadik', 'HR', 500000);
+INSERT INTO customer VALUES (7, 'Aryan Nikam', 'Marketing', 300000);
+INSERT INTO customer VALUES (8, 'Davendra Chavan', 'Finance', 350000);
+INSERT INTO customer VALUES (9, 'Pratham Dikshit', 'CS', 450000);
+INSERT INTO customer VALUES (10, 'Kabir Gada', 'Digital Marketer', 350000);
+
+SELECT * FROM customer;
+
+DROP TABLE customer;
+

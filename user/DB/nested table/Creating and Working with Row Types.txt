@@ -1,0 +1,25 @@
+-- Assuming you have a table named employees
+CREATE TABLE employees (
+    emp_id NUMBER PRIMARY KEY,
+    emp_name VARCHAR2(50),
+    emp_salary NUMBER
+);
+
+-- Insert sample data
+INSERT INTO employees (emp_id, emp_name, emp_salary) VALUES (1, 'Aarav', 50000);
+INSERT INTO employees (emp_id, emp_name, emp_salary) VALUES (2, 'Vivaan', 60000);
+INSERT INTO employees (emp_id, emp_name, emp_salary) VALUES (3, 'Sanchit Rawool', 55000);
+INSERT INTO employees (emp_id, emp_name, emp_salary) VALUES (4, 'Anaya', 65000);
+INSERT INTO employees (emp_id, emp_name, emp_salary) VALUES (5, 'Diya', 70000);
+COMMIT;
+
+DECLARE
+    emp_rec employees%ROWTYPE;  -- Declare a row type variable
+BEGIN
+    -- Select a record into the row type variable
+    SELECT * INTO emp_rec FROM employees WHERE emp_id = 3;
+
+    -- Display employee details
+    DBMS_OUTPUT.PUT_LINE('Employee ID: ' || emp_rec.emp_id || ', Name: ' || emp_rec.emp_name || ', Salary: ' || emp_rec.emp_salary);
+END;
+/

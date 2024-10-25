@@ -1,0 +1,20 @@
+---------create package
+CREATE PACKAGE customer_sal AS
+PROCEDURE find_sal2(c_id customer.id%type);
+END customer_sal;
+
+--------package body
+CREATE OR REPLACE PACKAGE BODY customer_sal AS
+PROCEDURE find_sal2(c_id customer.id%TYPE) as
+c_sal customer.salary%TYPE;
+BEGIN
+SELECT salary INTO c_sal FROM customer WHERE id=c_id;
+dbms_output.put_line('Salary:'|| c_sal);
+END find_sal2;
+END customer_sal;
+--------accessing package
+DECLARE
+Code customer.id%type:=2;
+BEGIN
+customer_sal.find_sal2(Code);
+END;

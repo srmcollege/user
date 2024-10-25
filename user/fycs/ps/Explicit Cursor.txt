@@ -1,0 +1,70 @@
+#PL/SQL Cursor 
+2) PL/SQL Explicit Cursor 
+-----------------------------------------------------------------------------------------------
+1] 
+
+create table Customer(id number(5),name varchar (30),department varchar(20),salary number(10))
+insert into Customer values(1,'Sanjay ','Finance',30000)
+insert into Customer values(2,'Madhav ','Marketing',40000)
+insert into Customer values(3,'Harshad ','Finance',45000)
+insert into Customer values(4,'Roshan','HR',50000)
+insert into Customer values(5,'Aryan','Marketing',30000)
+insert into Customer values(6,'Davendra','Finance',35000)
+insert into Customer values(7,'Pratham','CS',45000)
+insert into Customer values(8,'Kabir','Digitla Marketer',35000)
+insert into Customer values(9,'Ranjan','HR',50000)
+insert into Customer values(10,'Mahendra','Marketing',40000)
+
+
+select*from Customer
+
+DECLARE
+	c_id Customer.ID%TYPE;
+	c_name Customer.NAME%TYPE;
+	c_salary Customer.SALARY%TYPE;
+	
+	CURSOR c_Customer IS SELECT ID,NAME,SALARY FROM Customer;
+	
+BEGIN
+	OPEN c_Customer ;
+		LOOP
+			FETCH c_Customer INTO c_id ,c_name ,c_salary ;
+			EXIT WHEN c_Customer %NOTFOUND;
+			DBMS_OUTPUT.PUT_LINE(c_id ||'   '||c_name ||'   '||c_salary );
+		END LOOP;
+	CLOSE c_Customer ;             
+END;
+
+-------------------------------------------------------------------------------------------------------
+
+2]
+create table employee (id number(5),name varchar (30),department varchar(20),salary number(10))
+insert into employee values(1,'Sanjay','Finance',30000)
+insert into employee values(2,'Madhav','Marketing',400000)
+insert into employee values(3,'Shantanu','CS',450000)
+insert into employee values(4,'Pandhari ','HR',500000)
+insert into employee values(5,'Harshad','Finance',450000)
+insert into employee values(6,'Roshan','HR',500000)
+insert into employee values(7,'Aryan','Marketing',300000)
+insert into employee values(8,'Davendra','Finance',350000)
+insert into employee values(9,'Pratham','CS',450000)
+insert into employee values(10,'Kabir','Digitla Marketer',350000)
+
+select * from  employee
+
+
+DECLARE
+	CURSOR emp_cursor(P_DEPARTMENT_ID NUMBER)IS
+	SELECT ID,NAME FROM employee WHERE ID=P_DEPARTMENT_ID;
+	
+	V_ID employee.ID%TYPE;
+	V_NAME employee.NAME%TYPE;
+BEGIN
+	OPEN emp_cursor(1003);
+		LOOP
+			FETCH emp_cursor INTO V_ID,V_NAME;
+			EXIT WHEN emp_cursor%NOTFOUND;
+			DBMS_OUTPUT.PUT_LINE('Employee ID : '||V_ID||' NAME :'||V_NAME);
+		END LOOP;
+	CLOSE emp_cursor;
+END;   

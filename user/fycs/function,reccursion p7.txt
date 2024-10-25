@@ -1,0 +1,150 @@
+-----Define and call function using create and replace keyword.
+CREATE OR REPLACE FUNCTION ADDER(N1 IN NUMBER,N2 IN NUMBER)
+RETURN NUMBER
+IS
+N3 NUMBER(8);
+BEGIN
+N3:=N1+N2;
+RETURN N3;
+END;
+/////////////
+DECLARE
+N3 NUMBER(2);
+BEGIN
+N3:=ADDER(11,22);
+DBMS_OUTPUT.PUT_LINE('ADDITION IS:'||N3);
+END;
+
+//////////////////////////////////////////////////////////////////////////
+----Define and call function without using create and replace keyword
+DECLARE
+A NUMBER;
+B NUMBER;
+C NUMBER;
+FUNCTION FINDMAX(X IN NUMBER,Y IN NUMBER)
+RETURN NUMBER
+IS 
+Z NUMBER;
+BEGIN
+IF X>Y THEN
+Z:=X;
+ELSE
+Z:=Y;
+END IF;
+RETURN Z;
+END;
+BEGIN
+A:=23;
+B:=45;
+C:=FINDMAX(A,B);
+DBMS_OUTPUT.PUT_LINE('MAXIMUM OF(23,45):'||C);
+END;
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+---------reccursion function
+declare
+num number:=1
+factorial number;
+
+function fact(x number)
+return number
+is 
+f number;
+begin
+if x=0 then
+f:=1;
+else
+f:=x*(fact-1);
+end if;
+return f:
+end;
+begin
+num:=6;
+factorial:=fact(num);
+dbms_output.put_line('factorial'||num||'is'||factorial);
+end;
+
+//////////////////////////////////////////////////////////////////////////////
+-----------------Call function in dbms_output.put_line
+
+CREATE OR REPLACE FUNCTION square number (num IN NUMBER) 
+RETURN NUMBER
+IS
+result NUMBER;
+BEGIN
+result := num * num;
+RETURN result;
+END;
+
+
+BEGIN
+DBMS_OUTPUT.PUT_LINE('The square of 10 is'|| square_number(10));
+END;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+---------------Define and use function in select clause , Count customers from a function and return value back
+create table employee1(id number(3),name varchar(20),department varchar(40),salary number(10))
+
+insert into employee1 values (1,'prajesh','CS',45000)
+insert into employee1 values (2,'sahil','CS',40000)
+insert into employee1 values (3,'parth','IT',30000)
+insert into employee1 values (4,'kartik','BA',15000)
+insert into employee1 values (5,'shubham','BCOM',35000)
+insert into employee1 values (6,'purva','BAF',45000)
+insert into employee1 values (7,'divya','CS',30000)
+insert into employee1 values (8,'hema','IT',45000)
+insert into employee1 values (9,'diya','BCOM',30000)
+insert into employee1 values (10,'nikhil','BAF',40000)
+insert into employee1 values (11,'srishti','BA',50000)
+insert into employee1 values (12,'diksha','BCOM',30000)
+insert into employee1 values (13,'rutuja','IT',45000)
+insert into employee1 values (14,'nidhi','BA',20000)
+insert into employee1 values (15,'tanvi','CS',45000)
+insert into employee1 values (16,'prachi','BF',45000)
+insert into employee1 values (17,'sanjar','BCOM',35000)
+insert into employee1 values (18,'priti','CS',50000)
+insert into employee1 values (19,'ashiwarya','IT',35000)
+insert into employee1 values (20,'athrva','BA',20000)
+
+select *form employee1
+create or replace function totalemployee1
+return number 
+is 
+total number(2):=0;
+begin
+select count(*)into total from employee1;
+return total;
+end;
+//////////
+declare
+e number(2);
+begin
+e:=totalemployee1();
+dbms_output.put_line('total no. of employee1:'||e);
+end;
+
+/////////////////////////////////////////////////////////////////////////////////////
+-------------Call function and store the return value to a variable.
+
+
+--Create or replace the function
+CREATE OR REPLACE FUNCTION add_numbers RETURN NUMBER IS
+BEGIN
+RETURN 10 + 10; --Adding two numbers
+
+END add_numbers;
+
+/////////////
+
+DECLARE
+-- Variable to store the return value
+result NUMBER;
+BEGIN
+-- Call the function and store the return value in 'result' 
+result := add_numbers();
+--------Print the result using DBMS_OUTPUT.PUT_LINE
+DBMS_OUTPUT.PUT_LINE('The result is:'|| result);
+END;
+
+
+

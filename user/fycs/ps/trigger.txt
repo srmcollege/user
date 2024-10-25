@@ -1,0 +1,36 @@
+-- Trigger 
+
+--code of trigger
+
+CREATE OR REPLACE TRIGGER display_salary_changes
+BEFORE DELETE OR INSERT OR UPDATE ON customer
+FOR EACH ROW 
+WHEN (NEW.ID > 0)
+DECLARE 
+	sal_diff number;
+BEGIN 
+	sal_diff := :NEW.Salary - :OLD.Salary;
+	
+	dbms_output.put_line('Old Salary : '|| :OLD.Salary);
+	dbms_output.put_line('NEW Salary : '|| :NEW.Salary);
+	dbms_output.put_line('Salary Difference : ' || sal_diff);
+END;
+-- output should be trigger created 
+
+
+-- procedure on trigger
+
+DECLARE 
+    total_rows NUMBER(2);
+BEGIN
+    UPDATE customer
+    SET salary = salary + 5000;
+
+    total_rows := SQL%ROWCOUNT; 
+
+    IF sql%NOTFOUND THEN  
+        DBMS_OUTPUT.PUT_LINE('No customers updated');
+    ELSIF sql%FOUND THEN  
+        DBMS_OUTPUT.PUT_LINE(total_rows || ' Customers updated.');
+    END IF;
+END;

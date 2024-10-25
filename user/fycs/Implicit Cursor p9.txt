@@ -1,0 +1,59 @@
+#PL/SQL Cursor 
+1) PL/SQL Implicit Cursor 
+-----------------------------------------------------------------------------------------------
+1] code for all employees salary update
+
+declare
+	total_rows number(2);
+begin
+	update employee
+	set salary = salary + 2000;
+	
+	IF sql%NOTFOUND then 
+			dbms_output.put_line ('NO Customers Updated !');
+	ELSIF sql%FOUND then
+			total_rows := sql%rowcount;
+			dbms_output.put_line (total_rows || ' Coustomers Updated !');
+	END IF;
+end;
+---------------------------------------------------------------------------------------------
+2] code for perticular employe salary update 
+
+declare
+	total_rows number(2);
+	Id number (5);
+begin
+	update employee
+        set salary = salary + 2000 where Id = 5;
+	
+	IF sql%NOTFOUND then 
+			dbms_output.put_line ('NO Customers Updated !');
+	ELSIF sql%FOUND then
+			total_rows := sql%rowcount;
+			dbms_output.put_line (total_rows || ' Coustomers Updated !');
+	END IF;
+end;
+---------------------------------------------------------------------------------------------
+3] Use of exception 
+
+declare
+	c_name varchar(10);
+	id number(5);
+	name varchar(10);
+begin
+	select name into c_name from employee where id =123;
+exception 
+	when NO_DATA_FOUND then 
+		dbms_output.put_line('No Coustomers Found');
+	when others then
+		dbms_opuput.put_line(c_name||' c_name');
+end;
+
+
+create table employee (Id number(5)primary key, Name varchar(80), Salary number(10))
+Insert into employee values (1,'Sumit',10000)
+Insert into employee values (2,'Suraj',9000)
+insert into employee values (3,'Mayuresh',12000)
+insert into employee values (4,'Nikhil',15500)
+Insert into employee values (5,'Sancit',18000)
+select * from employee

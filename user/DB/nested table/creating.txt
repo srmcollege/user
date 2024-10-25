@@ -1,0 +1,9 @@
+-- Create a type for employee details
+CREATE OR REPLACE TYPE employee_type AS OBJECT (
+    emp_id NUMBER,
+    emp_name VARCHAR2(50),
+    emp_salary NUMBER
+);
+
+-- Create a nested table type
+CREATE OR REPLACE TYPE employee_table_type AS TABLE OF employee_type;
