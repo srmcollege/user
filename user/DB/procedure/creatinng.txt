@@ -1,5 +1,0 @@
-create procedure emp33 
-is 
-begin
-NULL;
-end;

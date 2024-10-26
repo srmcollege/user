@@ -1,7 +1,0 @@
-DECLARE
-   v_num1 NUMBER;  -- Local variable
-   v_num2 NUMBER := 10;  -- Initialized local variable
-BEGIN
-   -- Statements go here
-   DBMS_OUTPUT.PUT_LINE('The value of v_num2 is: ' || v_num2);
-END;

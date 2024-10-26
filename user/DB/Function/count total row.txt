@@ -1,8 +1,0 @@
-DECLARE
-    total_rows NUMBER;
-
-BEGIN
-    SELECT COUNT(*) INTO total_rows FROM employees;
-    DBMS_OUTPUT.PUT_LINE('Total number of rows in employees table: ' || total_rows);
-END;
-/
