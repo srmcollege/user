@@ -1,0 +1,18 @@
+Cricket{ 
+display:block; margin-bottom:20px;
+}
+
+name{
+display:block; font-family: verdana;
+color: blue;
+}
+
+hundreds{ display:block;
+font-family: verdana; color:green;
+}
+
+fifties{
+display:block;
+font-family: verdana;
+color: black;
+}

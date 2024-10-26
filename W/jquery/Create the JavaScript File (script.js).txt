@@ -1,0 +1,9 @@
+$(document).ready(function() {
+    $("#animateBtn").click(function() {
+        $("#box")
+            .slideDown(500) // Slide down in 500 milliseconds
+            .animate({ backgroundColor: "#FF5733" }, 1000) // Change color over 1 second
+            .delay(500) // Wait for 500 milliseconds
+            .slideUp(500); // Slide up in 500 milliseconds
+    });
+});

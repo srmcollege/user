@@ -1,0 +1,12 @@
+* {
+    color: black;
+    background-color: yellow;
+    text-align: left;
+    padding: 10px;
+    font-family: "Times New Roman";
+    display: block;
+}
+
+Cricket {
+    margin-bottom: 20px;
+}

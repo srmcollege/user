@@ -1,0 +1,59 @@
+<!--
+<html>
+<body>
+<h1>Window Object</h1>
+<h2>Closed Property</h2>
+
+<p><button onclick="openWin()">Open "myWindow"</button></p>
+<p><button onclick="closeWin()">Close "myWindow"</button></p>
+<p><button onclick="checkWin()">Is "myWindow" closed?</button></p>
+
+<div id="demo"></div>
+
+<script>
+let myWindow;
+
+function openWin(){
+myWindow=window.open("","myWindow","width=400,height=200");
+}
+
+function closeWin(){
+if(myWindow){
+myWindow.close();
+}
+}
+
+function checkWin(){
+let text="";
+if(!myWindow){
+text="It has never been opened";
+} else{
+if(myWindow.closed){
+text="It is closed.";
+} else{
+text="It is open";
+}
+}
+
+document.getElementById("demo").innerHTML=text;
+}
+</script>
+</body>
+</html> -->
+
+
+
+<html>
+<body>
+<h1>Window Object</h1>
+<h2>Document<h2>
+<p id="demo"></p>
+
+<script>
+let url=window.document.URL;
+document.getElementById("demo").innerHTML=url;
+</script>
+</body>
+</html>
+
+

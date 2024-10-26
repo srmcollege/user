@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viking Movie Fan Page</title>
+</head>
+<body>
+
+<!-- Navigation Across Multiple Pages -->
+<h1>Welcome to the Viking Movie Fan Page</h1>
+<p>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="characters.html">Characters</a> |
+    <a href="media.html">Media</a> |
+    <a href="contact.html">Contact Us</a>
+</p>
+
+<!-- Table Tags -->
+<h2>Movie Release Schedule</h2>
+<table border="1">
+    <tr>
+        <th>Region</th>
+        <th>Release Date</th>
+        <th>Language</th>
+    </tr>
+    <tr>
+        <td>USA</td>
+        <td>March 1, 2024</td>
+        <td>English</td>
+    </tr>
+    <tr>
+        <td>Germany</td>
+        <td>March 15, 2024</td>
+        <td>German</td>
+    </tr>
+    <tr>
+        <td>Japan</td>
+        <td>April 5, 2024</td>
+        <td>Japanese</td>
+    </tr>
+</table>
+
+<!-- Form Tags with Various Elements -->
+<h2>Sign Up for Updates</h2>
+<form action="subscribe.php" method="POST">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br><br>
+
+    <label for="age">Age:</label><br>
+    <input type="number" id="age" name="age"><br><br>
+
+    <label for="favCharacter">Favorite Character:</label><br>
+    <select id="favCharacter" name="favCharacter">
+        <option value="vikingLeader">Viking Leader</option>
+        <option value="warriorChief">Warrior Chief</option>
+        <option value="legendaryQueen">Legendary Queen</option>
+    </select><br><br>
+
+    <label>Preferred Updates:</label><br>
+    <input type="checkbox" id="news" name="updates" value="news">
+    <label for="news">News</label><br>
+    <input type="checkbox" id="events" name="updates" value="events">
+    <label for="events">Events</label><br>
+    <input type="checkbox" id="merch" name="updates" value="merch">
+    <label for="merch">Merchandise</label><br><br>
+
+    <input type="submit" value="Subscribe">
+</form>
+
+<!-- Embedded Multimedia Elements -->
+<h2>Viking Movie Trailer</h2>
+<video width="600" controls>
+    <source src="viking-trailer.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<h2>Background Music</h2>
+<audio controls>
+    <source src="viking-theme.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<!-- Footer -->
+<p>&copy; 2024 Viking Movie Fan Page. All rights reserved.</p>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Objects - String, RegExp, Math, Date</title>
+    <script>
+        // String Object
+        function stringDemo() {
+            const str = "Hello, World!";
+            console.log("Original String:", str);
+            console.log("Uppercase:", str.toUpperCase());
+            console.log("Substring (0-5):", str.substring(0, 5));
+            console.log("Character at index 7:", str.charAt(7));
+            alert("Open the console to see the String demo results.");
+        }
+
+        // RegExp Object
+        function regexpDemo() {
+            const pattern = /world/i;
+            const testString = "Hello, World!";
+            console.log("Pattern Found:", pattern.test(testString));
+            console.log("Pattern Match:", testString.match(pattern));
+            alert("Open the console to see the RegExp demo results.");
+        }
+
+        // Math Object
+        function mathDemo() {
+            console.log("PI:", Math.PI);
+            console.log("Square root of 16:", Math.sqrt(16));
+            console.log("Random number (0-10):", Math.floor(Math.random() * 10));
+            console.log("Absolute of -5:", Math.abs(-5));
+            alert("Open the console to see the Math demo results.");
+        }
+
+        // Date Object
+        function dateDemo() {
+            const now = new Date();
+            console.log("Current Date and Time:", now);
+            console.log("Year:", now.getFullYear());
+            console.log("Month:", now.getMonth() + 1);
+            console.log("Day:", now.getDate());
+            console.log("Time:", now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds());
+            alert("Open the console to see the Date demo results.");
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript Objects - String, RegExp, Math, Date</h1>
+    <button onclick="stringDemo()">String Demo</button>
+    <button onclick="regexpDemo()">RegExp Demo</button>
+    <button onclick="mathDemo()">Math Demo</button>
+    <button onclick="dateDemo()">Date Demo</button>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="style.css"?>
+<!DOCTYPE Sports [
+    <!ELEMENT Sports (Cricket+)>
+    <!ELEMENT Cricket (name, hundred, fifties)>
+    <!ELEMENT name (#PCDATA)>
+    <!ELEMENT hundred (#PCDATA)>
+    <!ELEMENT fifties (#PCDATA)>
+]>
+<Sports>
+    <Cricket>
+        <name>Virat Kohli</name>
+        <hundred>75</hundred>
+        <fifties>146</fifties>
+    </Cricket>
+    <Cricket>
+        <name>M.S. Dhoni</name>
+        <hundred>78</hundred>
+        <fifties>106</fifties>
+    </Cricket>
+    <Cricket>
+        <name>Mohammed Siraj</name>
+        <hundred>46</hundred>
+        <fifties>67</fifties>
+    </Cricket>
+    <Cricket>
+        <name>Shubman Gill</name>
+        <hundred>45</hundred>
+        <fifties>34</fifties>
+    </Cricket>
+    <Cricket>
+        <name>Hardik Pandya</name>
+        <hundred>65</hundred>
+        <fifties>100</fifties>
+    </Cricket>
+    <Cricket>
+        <name>Rohit Sharma</name>
+        <hundred>55</hundred>
+        <fifties>128</fifties>
+    </Cricket>
+    <Cricket>
+        <name>KL Rahul</name>
+        <hundred>75</hundred>
+        <fifties>146</fifties>
+    </Cricket>
+    <Cricket>
+        <name>Rishabh Pant</name>
+        <hundred>23</hundred>
+        <fifties>42</fifties>
+    </Cricket>
+    <Cricket>
+        <name>Shreyas Iyer</name>
+        <hundred>34</hundred>
+        <fifties>25</fifties>
+    </Cricket>
+    <Cricket>
+        <name>Kuldeep Yadav</name>
+        <hundred>177</hundred>
+        <fifties>67</fifties>
+    </Cricket>
+    <Cricket>
+        <name>Shivam Dube</name>
+        <hundred>46</hundred>
+        <fifties>34</fifties>
+    </Cricket>
+</Sports>

@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>JavaScript Demo</title>
+</head>
+<body>
+<p>Factorial Calculation</p>
+<p id="demo3">Factorial result will be displayed here</p>
+<button type="button" onclick="factorial()">Click Me!</button>
+<script>
+function factorial() {
+let x=prompt("Enter a positive integer");
+let result=1;
+if (x<0) {
+document.getElementById("demo").innerHTML="Please enter a non-negative number.";
+return;
+}
+for(let i=1; i<=x;i++) {
+result*=i;
+}
+document.getElementById("demo3").innerHTML="Factorial is: " + result;
+}
+</script>
+</body>
+</html>
+
+
+<html>
+<head>
+<title>JavaScript Demo</title>
+</head>
+<body>
+<p>Fibonacci Series</p>
+<p id="demo">Fibonacci series will be displayed here</p>
+<button type="button" onclick="fibonacci()">Click Me!</button>
+<script>
+function fibonacci() {
+let x = prompt("Enter the number of terms");
+let fibo=[0,1];
+if (x<=0) {
+document.getElementById("demo").innerHTML="Please enter a positive number.";
+return;
+}
+for (let i=2;i<x;i++) {
+fibo[i]=fibo[i-1]+fibo[i-2];
+}
+document.getElementById("demo").innerHTML="Fibonacci series is: " + fibo;
+}
+</script>
+</body>
+</html>
+
+
+<html>
+<head>
+<title>JavaScript Demo</title>
+</head>
+<body>
+<p>Prime Number Checker</p>
+<p id="demo1">Prime number will be displayed here</p>
+<button type="button" onclick="checkprime()">Click Me!</button>
+<script>
+function checkprime() {
+let x=prompt("Enter the number");
+let n=x;
+let prime=1;
+if (n<=1) {
+prime = 0;
+} else {
+for (let i=2;i<n;i++) {
+if (n%i===0) {
+prime=0;
+break;
+}
+}
+}
+if(prime) {
+document.getElementById("demo1").innerHTML=n+" is a prime number.";
+}else {
+document.getElementById("demo1").innerHTML=n+" is not a prime number.";
+}
+}
+</script>
+</body>
+</html>
+
+
+
+<html>
+<head>
+<title>JavaScript Demo</title>
+</head>
+<body>
+<p>Reverse Number</p>
+<p id="demo2">Reverse number will be displayed here</p>
+<button type="button" onclick="reverse()">Click Me!</button>
+<script>
+function reverse() {
+let x=prompt("Enter the number");
+let n=x-0;
+let rev=0;
+while (n!=0) {
+let digit=n%10;
+rev=rev*10+digit;
+n=(n-digit)/10;
+}
+document.getElementById("demo2").innerHTML="Reversed number is " +rev;
+}
+</script>
+</body>
+</html>
+

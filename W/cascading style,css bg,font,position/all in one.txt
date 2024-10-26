@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Styled Viking Fan Page</title>
+    <style>
+        /* CSS Properties to Change Background */
+        body {
+            background-color: #1a1a2e;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* CSS Properties to Change Fonts and Text Style */
+        h1 {
+            font-size: 36px;
+            color: #e94560;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #0f3460;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #fff;
+            margin: 10px;
+            text-align: center;
+        }
+
+        /* CSS Properties for Positioning an Element */
+        #main-content {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #16213e;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        #footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #0f3460;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Welcome to the Viking Fan Page</h1>
+
+<div id="main-content">
+    <h2>About the Viking Movie</h2>
+    <p>The Viking movie explores the legendary battles, culture, and survival of Viking warriors in ancient Scandinavia.</p>
+
+    <h2>Movie Features</h2>
+    <p>The movie highlights themes of bravery, loyalty, and adventure, bringing the Viking world to life with historical accuracy and thrilling action.</p>
+</div>
+
+<!-- Footer positioned at the bottom of the page -->
+<div id="footer">
+    &copy; 2024 Viking Fan Page
+</div>
+
+</body>
+</html>
