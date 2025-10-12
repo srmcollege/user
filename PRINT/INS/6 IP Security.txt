@@ -1,0 +1,128 @@
+1.Take 2 PC, 3 Routers(1941), 2 switches (2960-24TT)
+
+		      Router0
+PC2	             /	     \		       PC3	
+    \	      Router1	      Router2	      /	
+     \       /                       \       /
+      Switch0			      Switch0
+       /                                     \
+    PC0                                       PC1	
+
+2.Connect the PC0-switch0 using copper straight through wire, then connect switch0 as Fast Ethernet and to Router1 as gigabit 0/1. 
+Then from Router1 as gigabit0/0 and to Router0 as gigabit0/1 in these use copper cross over wire then Router0 as gigabit0/1 and Router2 as gigabit0/0 and further same process as we done for the pc connection.
+ 
+3.PC0 = IP address - 192.168.1.2 and Default gateway - 192.168.1.1.
+ 
+4.Router0 = Gigabitethernet0/1 > IP address - 192.168.1.1.
+ 
+5.Router0 = Gigabitethernet0/0 > IP address - 20.0.0.1.
+ 
+6.Router1 = Gigabitethernet0/1 > IP address - 20.0.0.2.
+
+7.Router0 = Gigabitethernet0/0 > IP address - 30.0.0.2.
+ 
+8.Router2 = Gigabitethernet0/1 > IP address - 192.168.2.1.
+ 
+9.Router0 = Gigabitethernet0/0 > IP address - 30.0.0.1.
+ 
+10.PC1 = IP address - 192.168.2.2 and Default gateway - 192.168.2.1.
+ 
+11.Router2 > CLI.
+•	enable
+•	configure terminal
+•	ip route 0.0.0.0 0.0.0.0 30.0.0.2
+ 
+12.Router0 > CLI.
+•	enable
+•	configure terminal
+•	ip route 0.0.0.0 0.0.0.0 20.0.0.2
+ 
+13.PC0 > Desktop > Command Prompt > ping 192.168.2.2
+ 
+14.PC1 > Desktop > Command Prompt > ping 192.168.1.2
+ 
+15.Router1 > CLI.
+•	configure terminal
+•	hostname R1
+
+16.Router0 > CLI.
+•	configure terminal
+•	hostname R0
+ 
+17.Router2 > CLI.
+•	configure terminal
+•	hostname R2
+
+18.Router0 > CLI.
+•	show version
+•	configure terminal
+•	license boot module c1900 technology-package securityk9
+•	yes
+•	exit
+•	copy run startup-config
+•	reload
+•	enable
+•	show version
+ 
+19.Router2 > CLI.
+•	show version
+•	configure terminal
+•	license boot module c1900 technology-package securityk9
+•	yes
+•	exit
+•	copy run startup-config
+•	reload
+•	enable
+•	show version
+ 
+20.Router0 > CLI.
+•	enable
+•	configure terminal
+•	crypto isakmp policy 10
+•	encryption aes 256
+•	authentication pre-share
+•	group 5
+•	exit
+•	crypto isakmp key ismile address 30.0.0.1
+•	crypto ipsec transform-set R0->R2 esp-aes 256 esp-sha-hmac
+
+21.Router2 > CLI.
+•	enable
+•	configure terminal
+•	access-list 100 permit ip 192.168.2.0 0.0.0.255 192.168.1.0 0.0.0.255
+•	crypto isakmp policy 10
+•	encryption aes 256
+•	authentication pre-share
+•	group 5
+•	exit
+•	crypto isakmp key ismile address 20.0.0.1
+•	crypto ipsec transform-set R2->R0 esp-aes 256 esp-sha-hmac
+
+22.Router0 > CLI.
+•	configure terminal
+•	crypto map IPSEC-MAP 10 ipsec-isakmp
+•	set peer 30.0.0.1
+•	set pfs group5
+•	set security-association lifetime seconds 86400
+•	set transform-set R0->R2
+•	match address 100
+•	exit
+•	interface g0/0
+•	crypto map IPSEC-MAP
+ 
+23.Router2 > CLI.
+•	configure terminal
+•	crypto map IPSEC-MAP 10 ipsec-isakmp
+•	set peer 20.0.0.1
+•	set pfs group5
+•	set security-association lifetime seconds 86400
+•	set transform-set R2->R0
+•	match address 100
+•	exit
+•	interface g0/0
+•	crypto map IPSEC-MAP.
+ 
+24.PC0 > Desktop > Command Prompt > ping 192.168.2.2.
+ 
+25.PC1 > Desktop > Command Prompt > ping 192.168.1.2.
+

@@ -1,0 +1,177 @@
+1.Take 2 PC, 3 Routers(1941), 2 Switch(2950-24), 1 Server(Server-PT).
+
+		      Router0
+PC0	             /	     \		       PC1	
+    \	      Router1	      Router2	      /	
+     \       /                       \       /
+      Switch0			      Switch0
+       /
+Server0
+
+2.Now we need to add ports respectively ; for that follow the below steps :
+•Router 0 > The port which is on turn it OFF > HWIC-2T Click on it > Add the port in it > And click on the ON option. 
+•Router 1 > The port which is on turn it OFF > HWIC-2T Click on it > Add the port in it > And click on the ON option. 
+•Router 2 > The port which is on turn it OFF > HWIC-2T Click on it > Add the port in it > And click on the ON option. 
+ 
+3.Now using AutoCable connect every components except the routers.
+
+4.Now using Serial DTE cable connect all the Routers :
+•Router 1 (Serial 0/1/0) - Router 0 (Serial 0/1/0)
+•Router 0 (Serial 0/1/1) - Router 2 (Serial 0/1/0)
+ 
+5.Now we need to assign IP addresses to PC0 And PC1 :
+•PC0 > Desktop > IP Configuration > IP Address : 192.168.1.4 > Default Gateway : 192.168.1.1
+•PC1 > Desktop > IP Configuration > IP Address : 192.168.4.4 > Default Gateway : 192.168.4.1
+ 
+6.Now we will try to ping from PC0 to PC1 just to check if connectivity is there.
+•PC0 > Desktop > Command Prompt > Command : ping 192.168.4.1
+•PC1 > Desktop > Command Prompt > Command : ping 192.168.1.4
+ 
+7.Now go to Server 0 > services > syslog and see empty which is correct :
+ 
+8.Now we need to assign GigabitEthernet , IP addresses and subnet  masks and serial addresses to Router 0 , Router 1 and Router 2 :
+---Now go to Router 1 > CLI 
+Commands :
+•	enable
+•	configure terminal
+•	int GigabitEthernet 0/0
+•	ip address 192.168.1.1 255.255.255.0
+•	no shut
+•	exit
+•	int serial 0/1/0
+•	ip address 192.168.2.1 255.255.255.0
+•	no shut
+---Now go to Router 0 > CLI 
+Commands :
+•	enable
+•	configure terminal
+•	int serial 0/1/0
+•	ip address 192.168.2.2 255.255.255.0
+•	no shut
+•	exit
+•	int serial 0/1/1
+•	ip address 192.168.3.1 255.255.255.0
+•	no shut
+---Now go to Router 2 > CLI 
+Commands :
+•	enable
+•	configure terminal
+•	int serial 0/1/0
+•	ip address 192.168.3.2 255.255.255.0
+•	no shut
+•	exit
+•	int GigabitEthernet 0/0
+•	ip address 192.168.4.1 255.255.255.0
+•	no shut
+ 
+9.Now we need to assign Networks and IP’s to it for that we need to configure it for Router 1 and Router 0 and Router 2 respectively;
+---Now go to Router 1 > CLI 
+Commands :
+•	enable
+•	configure terminal
+•	router rip
+•	netw 192.168.1.0
+•	netw 192.168.2.0
+•	exit
+•	exit
+•	show ip route
+---Now go to Router 0 > CLI 
+Commands :
+•	enable
+•	configure terminal
+•	router rip
+•	netw 192.168.2.0
+•	netw 192.168.3.0
+•	exit
+•	exit
+•	show ip route
+ 
+---Now go to Router 2 > CLI 
+Commands :
+•	enable
+•	configure terminal
+•	router rip
+•	netw 192.168.3.0
+•	netw 192.168.4.0
+•	exit
+•	exit
+•	show ip route
+ 
+10.Now we need to give IP to the server.
+•Server 0 > Desktop > IP Configuration > IP Address : 192.168.1.50 > Default Gateway : 192.168.1.1
+ 
+11.Now in that only click on services > Check if HTTP and HTTPS is on > Click on Syslog and check if it is empty (it should be empty).
+
+12.Now we will try to ping from PC0 And PC1 (Make sure that the packet must traverse and packets must be sent then only the process you have done till now is correct) :
+•PC0 > Desktop > Command Prompt > ping 192.168.4.4
+•PC1 > Desktop > Command Prompt > ping 192.168.1.4
+ 
+13.Now go to router 1.
+Commands :
+•	enable
+•	show version
+•	yes
+•	exit
+•	enable
+•	copy run startup-config  
+•	enable
+•	show version
+•	enable 
+•	mkdir ipdir 
+•	?
+•	configure terminal  
+•	ip ips config location ipdir
+•	ip ips name iosips
+•	ip ips signature-category
+•	?
+•	category all
+•	retired true
+•	?
+•	exit
+•	?
+•	category ?
+•	category ios_ips
+•	category ios_ips basic
+•	retired false
+•	exit
+•	exit
+•	interface GigabitEthernet 0/0
+•	ip ips iosips ?
+•	ip ips iosips out 
+•	exit
+•	logging host 192.168.1.50
+•	service timestamps log datetime msec
+•	ip ips ?
+•	ip ips signature-definition
+•	signature ?
+•	signature 2400 0
+•	?
+•	status
+•	retired false
+•	enable true
+•	exit
+•	engine
+•	?
+•	event-action ?
+•	event-action deny-packet-inline
+•	exit
+•	exit
+•	exit
+•	do show ip ips all
+ 
+14.Verify and check its output we will ping the pc0 and pc1 and then check the server syslog details;
+•PC0 > Desktop > Command Prompt > ping 192.168.4.4
+•PC1 > Desktop > Command Prompt > ping 192.168.1.4
+ 
+15.Now we will go to Server0 > services > Syslog to see details.
+ 
+---Extra Part---
+16.Connecting them using Autocable.
+•PC2 > Desktop > IP Configuration > IP Address : 192.169.1.5 >  Default Gateway : 192.168.1.1
+•PC3 > Desktop > IP Configuration > IP Address : 192.169.4.5 >  Default Gateway : 192.168.4.1
+•PC4 > Desktop > IP Configuration > IP Address : 192.169.4.6 >  Default Gateway : 192.168.4.1
+ 
+
+
+
+

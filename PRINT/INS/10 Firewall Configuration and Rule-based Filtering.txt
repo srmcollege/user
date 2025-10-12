@@ -1,0 +1,28 @@
+#Applying New rule to program.
+Step 1 : Open Windows Defender Firewall with Advanced Security.
+Step 2 : Ensure that firewall is Turn ON.
+Step 3 : Click on Outbound Rules > select New Rule.
+Step 4 : Rule type > Choose Program > next (google should be working). 
+Step 5 : Program > This program path : %Program Files%\Google\Chrome\Application\chrome.exe > browse.
+Step 6 : Action > Click on Block the Connection.
+Step 7 : Profiles > Correct all the CheckBox.
+Step 8 : Name  > Outbound_Program_Program_Disable > finish > it will display on right.
+Step 9 : Check that application Should not work(google.com).
+ 
+
+#Applying New rule to port.
+Step 1 : Rule type > Choose Port > next.
+Step 2 : Protocols and Ports > TCP > Specific remote ports - 80.443.
+Step 3 : Action > Block the COnnection.
+Step 4 : Profile > Correct all the CheckBox.
+Step 5 : Name > Http_Name.
+Step 6 : Search https://classroom.google.com/ . 
+ 
+
+#Applying rule to Website
+Step 1 : Rule type > Select Custom.
+Step 2 : Program > Select All programs > next.
+Step 3 : Protocol and Ports > Next.
+Step 4 : Scope > this IP address > give command on CMD(eg.nslookup youtube.com) > Add that in both > next.
+Step 5 : Action > Block the Connection.
+Step 6 : Search ‘YouTube.com’(not Accessible).

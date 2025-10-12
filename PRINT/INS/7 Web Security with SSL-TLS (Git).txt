@@ -1,0 +1,30 @@
+Step 1 : Download Git application from Google.
+Step 2 :  Setup of Git application.
+Step 3 :  Create a ‘crt’ folder in This PC > C drive >xampp >apache. Open crt folder in Git Bash.
+ 
+In Git Bash :
+Commands
+Step 1 : $openssl genrsa –out user.key 2048
+Step 2 : $openssl req –new –key user.key –out user.csr
+Step 3 : $openssl x509 –req –days 365 –in user.csr –signkey user.key –out user.crt
+Step 4 : Close Git Bash.
+
+Step 5 : Windows+R type-mmc. 
+Step 6 : File > Add/Remove Snap in.
+Step 7 : Click on Certificate > Add.
+Step 8 : Click on Computer account > next.
+Step 9 : Keep same > Finish.
+Step 10 : Click on Certificate > Add.
+Step 11 : Certificate is created.
+ 
+Step 12 : Action > All Tasks > Import certificate > next.
+Step 13 : Give path C:\xampp\apache\crt\hema.crt > next.
+Step 14 : Second - Trusted Root Certification Authorities > next
+Step 15 : Certificate Store Selected by User > finish.
+ 
+Step 16 : Install certificate from ‘crt’ folder. 
+Step 17 : Check Details.
+Step 18 : Create hema.html in htdocs.
+<h2>Welcome Hema</h2>
+ 
+ 
