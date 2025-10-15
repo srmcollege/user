@@ -1,0 +1,78 @@
+package Pract9;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;  // Import ChromeOptions
+import java.util.List;
+
+public class Pract9 {
+
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\LENOVO\\Documents\\"
+                + "NetBeansProjects\\pract9\\src\\Driver\\chromedriver.exe");
+
+        // Create ChromeOptions and enable accepting insecure SSL certificates
+        ChromeOptions options = new ChromeOptions();
+        options.setAcceptInsecureCerts(true);
+
+        // Pass options to ChromeDriver constructor
+        WebDriver driver = new ChromeDriver(options);
+
+        driver.get("http://localhost:7882/selenium/register.html");
+
+        // Click hobbies checkboxes
+        driver.findElement(By.xpath("//input[@value='Reading']")).click();
+        driver.findElement(By.xpath("//input[@value='Travelling']")).click();
+        driver.findElement(By.xpath("//input[@value='Music']")).click();
+        driver.findElement(By.xpath("//input[@value='Sports']")).click();
+
+       // Use correct lowercase 'hobbies[]'
+List<WebElement> hobbylist = driver.findElements(By.name("hobbies[]"));
+
+int checkedcount = 0;
+int uncheckedcount = 0;
+
+for (WebElement hobby : hobbylist) {
+    if (hobby.isSelected()) {
+        checkedcount++;
+    } else {
+        uncheckedcount++;
+    }
+}
+
+System.out.println("Total checkboxes: " + hobbylist.size());
+System.out.println("Total checked checkboxes are: " + checkedcount);
+System.out.println("Total unchecked checkboxes are: " + uncheckedcount);
+
+
+driver.findElement(By.xpath("//input[@value='female']")).click();       
+        
+// Radio buttons logic remains same
+List<WebElement> genderRadios = driver.findElements(By.name("gender"));
+
+int selectedCount = 0;
+int unselectedCount = 0;
+
+for (WebElement radio : genderRadios) {
+    if (radio.isSelected()) {
+        selectedCount++;
+    } else {
+        unselectedCount++;
+    }
+}
+
+System.out.println("Total radio buttons: " + genderRadios.size());
+System.out.println("Total selected radio buttons: " + selectedCount);
+System.out.println("Total unselected radio buttons: " + unselectedCount);
+
+
+        // Submit the form
+        driver.findElement(By.tagName("button")).click();
+
+        System.out.println("Form submitted successfully!");
+
+     
+    }
+}

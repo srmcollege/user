@@ -1,0 +1,65 @@
+
+package pract5;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.Label;
+import jxl.write.WriteException;
+
+public class Pract5 {
+
+    
+    public static void main(String[] args) throws FileNotFoundException, 
+            IOException, BiffException, WriteException {
+        FileInputStream is=new FileInputStream("D:\\TYCS\\STQA\\examdata.xls");
+        Workbook w =Workbook.getWorkbook(is);
+        Sheet s =  w.getSheet(0);
+        String a[][]=new String[s.getRows()][s.getColumns()];
+        
+        FileOutputStream os=new FileOutputStream("D:\\TYCS\\STQA\\result.xls");
+        WritableWorkbook wwb=Workbook.createWorkbook(os);
+        WritableSheet ws = wwb.createSheet("RESULT",0);
+        
+        for (int i=0;i<s.getRows();i++)
+        {
+            for (int j=0; j<s.getColumns();j++)
+            {
+                a[i][j]=s.getCell(j,i).getContents();
+                Label l2 = new Label(j,i,a[i][j]);
+                ws.addCell(l2);
+                
+                Label l1=new Label(6,0,"Result");
+                ws.addCell(l1);
+               
+            }
+        }
+        for (int i=1; i<s.getRows(); i++)
+        {
+            for (int j=2; j<s.getColumns(); j++)
+            {
+                a[i][j]=s.getCell(j,i).getContents();
+                int x = Integer.parseInt(a[i][j]);
+                if(x>40)
+                {
+                    Label l2=new Label(6,i,"PASS");
+                    ws.addCell(l2);
+                }
+                else{
+                    Label l1=new Label(6,i,"FAIL");
+                    ws.addCell(l1);
+                    break;
+                }
+            }
+        }
+        wwb.write();
+        wwb.close();
+        System.out.println("Data Copied...");
+    }    
+}

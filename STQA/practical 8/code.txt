@@ -1,0 +1,99 @@
+package pract8;
+
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Pract8 {
+
+    public static void main(String[] args) {
+        int count = 0;
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\LENOVO\\Documents\\NetBeansProjects"
+                + "\\pract8\\src\\Driver\\chromedriver.exe");
+
+        WebDriver driver = new ChromeDriver();
+        driver.get("http://localhost:7882/selenium/registration1.html");
+
+        int i;
+
+        // Counting input tags
+        List<WebElement> inputs = driver.findElements(By.tagName("input"));
+        System.out.println("There are " + inputs.size() + " input tags in the webpage");
+
+        for (i = 0; i < inputs.size(); i++) {
+            System.out.println("input " + (i + 1) + " name is " + inputs.get(i).getAttribute("name")
+                    + " and its type is " + inputs.get(i).getAttribute("type"));
+            count++;
+        }
+
+        System.out.println("\n");
+
+        // Counting anchor tags
+        List<WebElement> links = driver.findElements(By.tagName("a"));
+        System.out.println("There are " + links.size() + " anchor tags in the webpage");
+
+        for (i = 0; i < links.size(); i++) {
+            System.out.println("link " + (i + 1) + " is " + links.get(i).getText()
+                    + " and it targets to " + links.get(i).getAttribute("href"));
+            count++;
+        }
+
+        // Counting image tags
+        List<WebElement> images = driver.findElements(By.tagName("img"));
+        System.out.println("There are " + images.size() + " image tags in the webpage");
+
+        for (i = 0; i < images.size(); i++) {
+            System.out.println("img " + (i + 1) + " src is " + images.get(i).getAttribute("src")
+                    + " and alt is " + images.get(i).getAttribute("alt"));
+            count++;
+        }
+
+        // Counting select tags (dropdowns)
+        List<WebElement> dropdowns = driver.findElements(By.tagName("select"));
+        System.out.println("There are " + dropdowns.size() + " dropdown tags in the webpage");
+
+        
+        //Getting the selected option from select control
+        WebElement country = driver.findElement(By.name("country"));
+        Select country1 = new Select(country);
+        country1.selectByIndex(3);
+        WebElement e = country1.getFirstSelectedOption();
+        System.out.println("Selected country is " + e.getText());
+
+        // Counting option tags
+        List<WebElement> options = driver.findElements(By.tagName("option"));
+        System.out.println("There are " + options.size() + " options in the webpage");
+
+        for (i = 0; i < options.size(); i++) {
+            System.out.println("option " + (i + 1) + " name is " + options.get(i).getText());
+            count++;
+        }
+
+        // Counting ordered lists (ol)
+        List<WebElement> listItems = driver.findElements(By.tagName("ol"));
+        System.out.println("There are " + listItems.size() + " <ol> tags in the webpage");
+
+        for (i = 0; i < listItems.size(); i++) {
+            System.out.println("ol " + (i + 1) + " text is " + listItems.get(i).getText());
+            count++;
+        }
+
+        // Counting list items (li)
+        List<WebElement> liItems = driver.findElements(By.tagName("li"));
+        System.out.println("There are " + liItems.size() + " <li> tags in the webpage");
+        for (i = 0; i < liItems.size(); i++) {
+            System.out.println("li " + (i + 1) + " text is " + liItems.get(i).getText());
+            count++;
+        }
+
+        System.out.println("\nTotal number of objects is " + count);
+        
+       
+    }
+}
+
+
+
