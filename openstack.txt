@@ -1,0 +1,34 @@
+#sudo apt-get update
+
+#sudo apt-get upgrade
+
+#sudo -i
+
+#echo "openstack ALL=(ALL)NOPASSWD:ALL" >>/etc/sudoers
+#exit
+
+
+#sudo apt-get install git
+
+#sudo apt-get update && sudo apt-get -y install git
+
+#git clone https://git.openstack.org/openstack-dev/devstack
+
+#sudo apt-get install --reinstall ca-certificates
+
+#ls
+
+#cd devstack
+
+#getdit inc/python
+#cd samples
+
+#cp local.conf ../ 
+
+#cd ..
+#gedit local.conf
+
+#./stack.sh
+
+
+
